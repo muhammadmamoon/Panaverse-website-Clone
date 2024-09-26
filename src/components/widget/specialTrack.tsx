@@ -143,38 +143,34 @@ export const programData = [
     ],
   }
 ];
+
 export default function SpecialTrack() {
   const [selectitem, setselectitem] = useState("ai");
   const selecteditemData = programData.find((item) => item.slug === selectitem);
-  console.log(selectitem);
+
   return (
-    
-      <section>
-        <Wrapper>
-        {/* header section */}
+    <section>
+      <Wrapper>
         <div>
           <h2 className="text-5xl font-bold whitespace-pre-line">
             Specialized Tracks:
           </h2>
           <p className="mt-3 text-xl text-slate-600 max-w-sm">
-            After completing the first three quarters the participants will
+            After completing the first three quarters, participants will
             select one or more specializations consisting of two courses each:{" "}
           </p>
         </div>
-        <div className="mt-10 flex gap-x-6 gap-y-8 flex-col-reverse lg:flex-row">
-          {/* left section */}
-          <div className="rounded-xl sticky top-28 self-start  border border-slate-200 shadow-xl py-8 px-8 basis-8/12">
+        <div className="mt-10 flex gap-x-6 gap-y-8 flex-col lg:flex-row">
+          <div className="rounded-xl sticky top-28 self-start border border-slate-200 shadow-xl py-8 px-8 basis-8/12">
             <h4 className="text-teal-800 text-lg font-medium">
               Specialized Program
             </h4>
             <h3 className="text-2xl font-semibold py-5">
               {selecteditemData?.header}
             </h3>
-            <p className="text-lg ">
-              {selecteditemData?.description}
-            </p>
-            <button className="py-3 text-teal-800 font-Manrope mt-4 underline text-xl flex gap-2 items-end">
-              learn More{" "}
+            <p className="text-lg">{selecteditemData?.description}</p>
+            <button className="py-3 text-teal-800 font-Manrope mt-4 underline text-xl flex gap-2 items-end transition-colors duration-200 hover:text-teal-600">
+              Learn More{" "}
               <svg
                 className="mb-1.5"
                 width="10"
@@ -191,34 +187,31 @@ export default function SpecialTrack() {
               </svg>
             </button>
             <div className="flex flex-col sm:flex-row gap-4 mt-8 ">
-              {
-                selecteditemData?.quaters.map((item)=>(
-                  <QuaterBox
+              {selecteditemData?.quaters.map((item) => (
+                <QuaterBox
                   key={item.number}
                   header={item.header}
-                  decprition={
-                    item.description}
+                  description={item.description}
                   number={item.number}
                   haveBorder={false}
                 />
-                ))
-              } 
+              ))}
             </div>
           </div>
-          {/* right section */}
-          <div className="px-4 sticky top-0  mx-6 space-y-4 py-6 bg-slate-200 basis-4/12 flex-1">
-            {programData.map((item, i) => (
+          <div className="px-4 sticky top-0 mx-6 space-y-4 py-6 bg-slate-200 basis-4/12 flex-1">
+            {programData.map((item) => (
               <div
-                onClick={()=>setselectitem(item.slug)}
+                onClick={() => setselectitem(item.slug)}
                 key={item.slug}
-                className="flex gap-x-4 items-center cursor-pointer"
+                className={`flex gap-x-4 items-center cursor-pointer transition-transform duration-200 ${
+                  selectitem === item.slug ? "bg-teal-300" : "hover:bg-teal-100"
+                } p-2 rounded-md`}
               >
-                <div className=" flex-shrink-0 h-24 w-36">
-                  {/* <div className="bg-red-700 w-20 h-16 rounded"></div> */}
+                <div className="flex-shrink-0 h-24 w-36">
                   <Image
                     src={item.Image}
                     alt={item.header}
-                    className={"h-24 w-36 rounded-md object-cover "}
+                    className={"h-24 w-36 rounded-md object-cover"}
                   />
                 </div>
                 <div>
@@ -231,8 +224,7 @@ export default function SpecialTrack() {
             ))}
           </div>
         </div>
-        </Wrapper>
-      </section>
-    
+      </Wrapper>
+    </section>
   );
 }

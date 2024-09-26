@@ -1,29 +1,30 @@
-import Wrapper from "@/components/shaired/Wrapper";
-import Button from "./button";
-import QuaterBox from "@/components/shaired/QuaterBox";
 
-const coreTracks: any = () => {
+import QuaterBox from "../shaired/QuaterBox";
+import Wrapper from "../shaired/Wrapper";
+import Button from "./button";
+
+
+const CoreTracks = () => { // Capitalized component name for consistency
   const header = "Core Courses \n (Common in All Specializations):";
 
   const coreTrackData = [
     {
-      decription: "CS-101: Object-Oriented Programming using TypeScript",
+      description: "CS-101: Object-Oriented Programming using TypeScript", // Corrected spelling
       header: "Quarter I",
       number: 1,
     },
     {
-      decription:
-        "W2-201: Developing Planet-Scale Web 2.0 Serverless Cloud Cloud Apps and APIs using Next.js 13 and Cloud Development Kit (CDK) for Terraform",
+      description: "W2-201: Developing Planet-Scale Web 2.0 Serverless Cloud Apps and APIs using Next.js 13 and Cloud Development Kit (CDK) for Terraform", // Corrected the repeated word 'Cloud'
       header: "Quarter II",
       number: 2,
     },
     {
-      decription:
-        "$-101: Dollar Making Bootcamp - Full-Stack Template and API Product Development",
+      description: "$-101: Dollar Making Bootcamp - Full-Stack Template and API Product Development", // Corrected spelling
       header: "Quarter III",
-      number: 1,
+      number: 3, // Updated to reflect the correct number
     },
   ];
+
   return (
     <section className="mt-16 lg:mt-28">
       <Wrapper>
@@ -31,19 +32,24 @@ const coreTracks: any = () => {
           <h4 className="text-green-800 text-lg font-bold mb-3">
             Program of Studies
           </h4>
-          <h2 className="text-4xl font-bold whitespace-pre-line ">{header}</h2>
+          <h2 className="text-4xl font-bold whitespace-pre-line">{header}</h2>
           <p className="mt-4 text-lg text-slate-600">
-            Every participant of the program will start by completing the <br />{" "}
+            Every participant of the program will start by completing the <br />
             following three core courses:
           </p>
-          <Button text="learn More" />
+          <Button text="Learn More" />
         </div>
-        {/* boxex */}
-        <div className="my-20 flex gap-x-4">
+        
+        {/* Boxes */}
+        <div className="my-20 flex flex-col sm:flex-row gap-4"> {/* Adjusted for responsive stacking */}
           {coreTrackData.map((item, i) => (
-       
-        <QuaterBox key={item.number} header={item.header} decprition={item.decription} number={i+1} haveBorder={true}/>
-       
+            <QuaterBox 
+              key={item.number} 
+              header={item.header} 
+              description={item.description} // Corrected spelling
+              number={item.number} // Corrected to use the number from data
+              haveBorder={true} 
+            />
           ))}
         </div>
       </Wrapper>
@@ -51,4 +57,4 @@ const coreTracks: any = () => {
   );
 };
 
-export default coreTracks;
+export default CoreTracks; // Capitalized component name for consistency
