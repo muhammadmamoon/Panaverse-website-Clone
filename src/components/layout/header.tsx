@@ -39,7 +39,7 @@ function Header() {
       <Wrapper>
         <div className="flex justify-between py-4 items-center">
           <div>
-            <Image src={Logo} alt="Panver DAO" />
+          <Image src={Logo} alt="Panver DAO" width={150} height={50} />
           </div>
 
           {/* Hamburger Icon - Positioned to the right */}
